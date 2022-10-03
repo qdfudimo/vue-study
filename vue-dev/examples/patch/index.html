@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+  <!-- Delete ".min" for console warnings in development -->
+  <script src="../../dist/vue.js"></script>
+  <style>
+    html,
+    body {
+      font: 13px/18px sans-serif;
+    }
+
+    select {
+      min-width: 300px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="el">
+    <div v-for="(i,index) in arr">{{i}}</div>
+  </div>
+
+  <!-- using string template here to work around HTML <option> placement restriction -->
+  <!-- <script type="text/x-template" id="demo-template">
+    <div>
+        <p>Selected: {{ selected }}</p>
+        <select2>
+        </select2>
+        <button @click="changeData">{{name}}</button>
+      </div>
+    </script> -->
+
+  <!-- <script type="text/x-template" id="select2-template">
+    <button @click="changeData">{{name}}</button>
+    </script> -->
+
+  <script>
+    // Vue.component('select2', {
+    //   template: '#select2-template',
+    //   data() {
+    //     return {
+    //       name: "改变"
+    //     }
+    //   },
+    //   methods: {
+    //     changeData() {
+    //       this.name = "改变结束"
+    //     }
+    //   },
+    // })
+
+    var vm = new Vue({
+      el: '#el',
+      data: {
+        selected: 0,
+        arr: [1, 2, 3]
+      },
+      methods: {
+        changeData() {}
+      },
+    })
+    (function anonymous() {
+      with(this) {
+        return _c('div', {
+          attrs: {
+            "id": "el"
+          }
+        }, 
+        _l((arr), 
+        function (i) {
+          return _c('div', {
+            attrs: {
+              "key": i
+            }
+          }, [_v(_s(i))])
+        })
+        , 0)
+      }
+    })
+
+  </script>
+</body>
+
+</html>

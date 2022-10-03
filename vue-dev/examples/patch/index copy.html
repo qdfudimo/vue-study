@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+  <!-- Delete ".min" for console warnings in development -->
+  <script src="../../dist/vue.js"></script>
+  <style>
+    html,
+    body {
+      font: 13px/18px sans-serif;
+    }
+
+    select {
+      min-width: 300px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="el">
+  </div>
+  <script>
+    const MessageBox = Vue.extend({
+      template: '<div>{{content}}</div>',
+      // props: {
+      //   type: {
+      //     default: "success",
+      //     type: String
+      //   },
+      //   content: "这是一个实例"
+      // },
+      props:["content"],
+      data() {
+        return {}
+      },
+    })
+    const instance = new MessageBox({
+      propsData:{
+        content: "这是一个自定义弹框"
+      }
+    })
+    instance.$mount()
+    console.log(instance);
+    // var vm = new Vue({
+    //   el: '#el',
+    //   data: {},
+    //   methods: {},
+    // })
+  </script>
+</body>
+
+</html>
