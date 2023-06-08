@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let exprOrFns= ()=>{}
+        class Watcher {
+            constructor(vm, exprOrFn, cb, options) {
+                this.vm = vm;
+                this.exprOrFn = exprOrFn;
+                this.cb = cb;
+                this.lazy = !!options.lazy; // 表示是不是computed watcher
+                // 如果是计算属性watcher，则创建watcher的时候，什么都不执行（后续用到计算属性的时候再执行）
+                this.value = this.lazy ? undefined : this.get();
+            }
+
+            // new Watcher时会执行get方法；之后数据更新时，直接手动调用get方法即可
+            get() {
+                console.log("出发了");
+                return 111;
+            }
+        }
+        new Watcher(1,exprOrFns,exprOrFns,{})
+    </script>
+</body>
+
+</html>
